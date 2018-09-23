@@ -9,6 +9,7 @@
   <title>博客主页插入音乐 | </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="博客里面插入音乐.首先要打开.官方版的网易云.网页版的播放器.网易云地址:https://music.163.com.打开过之后搜索自己喜欢的一首歌.将复制的代码放到博客主题下:themes -&amp;gt; yilia -&amp;gt; layout -&amp;gt; _partial -&amp;gt; left-col.ejs 这个文件里面最后还需要修改配置文件. hexo 下 _config.yml 的 post_">
+<meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="博客主页插入音乐">
 <meta property="og:url" content="http://yoursite.com/2018/09/19/博客主页插入音乐/index.html">
@@ -19,7 +20,7 @@
 <meta property="og:image" content="http://yoursite.com/img/yinyue/wangyiyun_2.png">
 <meta property="og:image" content="http://yoursite.com/img/yinyue/yinyue_lu_jing.png">
 <meta property="og:image" content="http://yoursite.com/img/yinyue/gen_mu_lu.png">
-<meta property="og:updated_time" content="2018-09-19T14:24:27.302Z">
+<meta property="og:updated_time" content="2018-09-23T12:44:40.281Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="博客主页插入音乐">
 <meta name="twitter:description" content="博客里面插入音乐.首先要打开.官方版的网易云.网页版的播放器.网易云地址:https://music.163.com.打开过之后搜索自己喜欢的一首歌.将复制的代码放到博客主题下:themes -&amp;gt; yilia -&amp;gt; layout -&amp;gt; _partial -&amp;gt; left-col.ejs 这个文件里面最后还需要修改配置文件. hexo 下 _config.yml 的 post_">
@@ -73,6 +74,8 @@
     		
     			
     			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+            
     			
             
     			
@@ -187,6 +190,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       <span id="busuanzi_container_page_pv">
       | 阅读量<span id="busuanzi_value_page_pv"></span>次
       </span>
@@ -282,7 +296,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left" style="color:#FF4500; font-size:20px;">
-    		&copy; 2018年09月22日_22点55分23秒 微风之后的秋凉
+    		&copy; 2018年09月23日_22点54分06秒 微风之后的秋凉
     	</div>
     </div>
   </div>
@@ -322,6 +336,8 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
+    
+      
       
       
     
@@ -332,6 +348,8 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
       
       <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      
+        
       
         
       
@@ -354,6 +372,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">日记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">笔记本</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
