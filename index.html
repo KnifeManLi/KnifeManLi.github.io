@@ -149,6 +149,160 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Python-IED-之清屏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/15/vbbm1231/">Python-IED 之清屏</a>
+    </h1>
+  
+
+        
+        <a href="/2018/10/15/vbbm1231/" class="archive-article-date">
+  	<time datetime="2018-10-14T20:50:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="相信学过-Python-的童鞋都应该使用过-Python官方的-IDE-交互式编程软件-当做练习的时候有没有感觉练习过的代码看了很不舒服-如何向-Linux-下的-Python-可以清屏该多好噢-练习起来可以一目了然-下面跟大家分享下-windows-下-IDE-如何清屏-首先到-Python-官网下载-Python2-x-或-Python3-x-的版本如果下载好的可以忽略"><a href="#相信学过-Python-的童鞋都应该使用过-Python官方的-IDE-交互式编程软件-当做练习的时候有没有感觉练习过的代码看了很不舒服-如何向-Linux-下的-Python-可以清屏该多好噢-练习起来可以一目了然-下面跟大家分享下-windows-下-IDE-如何清屏-首先到-Python-官网下载-Python2-x-或-Python3-x-的版本如果下载好的可以忽略" class="headerlink" title="相信学过 Python 的童鞋都应该使用过 Python官方的 IDE 交互式编程软件, 当做练习的时候有没有感觉练习过的代码看了很不舒服, 如何向 Linux 下的 Python 可以清屏该多好噢,练习起来可以一目了然, 下面跟大家分享下 windows 下 IDE 如何清屏, 首先到 Python 官网下载 Python2.x 或 Python3.x 的版本如果下载好的可以忽略"></a>相信学过 Python 的童鞋都应该使用过 Python官方的 IDE 交互式编程软件, 当做练习的时候有没有感觉练习过的代码看了很不舒服, 如何向 Linux 下的 Python 可以清屏该多好噢,练习起来可以一目了然, 下面跟大家分享下 windows 下 IDE 如何清屏, 首先到 <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">Python 官网下载</a> Python2.x 或 Python3.x 的版本如果下载好的可以忽略</h1><p>首先找到 Python 安装路径: Python27/Lib/idlelib 这个文件夹,在 idlelib 这个文件下添加一个 ClearWindow.py 清屏文件,将下面代码复制进去保存即可 下</p>
+<pre><code>&quot;&quot;&quot;
+    Add these lines to config-extensions.def
+
+    [ClearWindow]
+    enable=1
+    enable_editor=0
+    enable_shell=1
+    [ClearWindow_cfgBindings]
+    clear-window=&lt;Control-Key-l&gt;
+
+&quot;&quot;&quot;
+
+class ClearWindow:
+
+    menudefs = [
+        (&apos;options&apos;, [None,
+               (&apos;Clear Shell Window&apos;, &apos;&lt;&lt;clear-window&gt;&gt;&apos;),
+       ]),]
+
+    def __init__(self, editwin):
+        self.editwin = editwin
+        self.text = self.editwin.text
+        self.text.bind(&quot;&lt;&lt;clear-window&gt;&gt;&quot;, self.clear_window2)
+
+        self.text.bind(&quot;&lt;&lt;undo&gt;&gt;&quot;, self.undo_event)  # add=&quot;+&quot; doesn&apos;t work
+
+    def undo_event(self, event):
+        text = self.text
+
+        text.mark_set(&quot;iomark2&quot;, &quot;iomark&quot;)
+        text.mark_set(&quot;insert2&quot;, &quot;insert&quot;)
+        self.editwin.undo.undo_event(event)
+
+        # fix iomark and insert
+        text.mark_set(&quot;iomark&quot;, &quot;iomark2&quot;)
+        text.mark_set(&quot;insert&quot;, &quot;insert2&quot;)
+        text.mark_unset(&quot;iomark2&quot;)
+        text.mark_unset(&quot;insert2&quot;)
+
+
+    def clear_window2(self, event): # Alternative method
+        # work around the ModifiedUndoDelegator
+        text = self.text
+        text.undo_block_start()
+        text.mark_set(&quot;iomark2&quot;, &quot;iomark&quot;)
+        text.mark_set(&quot;iomark&quot;, 1.0)
+        text.delete(1.0, &quot;iomark2 linestart&quot;)
+        text.mark_set(&quot;iomark&quot;, &quot;iomark2&quot;)
+        text.mark_unset(&quot;iomark2&quot;)
+        text.undo_block_stop()
+        if self.text.compare(&apos;insert&apos;, &apos;&lt;&apos;, &apos;iomark&apos;):
+            self.text.mark_set(&apos;insert&apos;, &apos;end-1c&apos;)
+        self.editwin.set_line_and_column()
+
+    def clear_window(self, event):
+        # remove undo delegator
+        undo = self.editwin.undo
+        self.editwin.per.removefilter(undo)
+        # clear the window, but preserve current command
+        self.text.delete(1.0, &quot;iomark linestart&quot;)
+        if self.text.compare(&apos;insert&apos;, &apos;&lt;&apos;, &apos;iomark&apos;):
+            self.text.mark_set(&apos;insert&apos;, &apos;end-1c&apos;)
+        self.editwin.set_line_and_column()
+        # restore undo delegator
+        self.editwin.per.insertfilter(undo)
+</code></pre><spam style="color:#000000; font-size:20px;">找到: Python27/Lib/idlelib/config-extensions.def 这个配置文件,用记事本打开在下面添加以下配置 ↓<smap><br><img src="/img/clear/python-clear.png"><br><spam style="color:#000000; font-size:20px;">如果想替换成其他的键可以自行修改 &lt;Control-Key-L<control-key-l>&gt; 这行, Key 就不要动了,</control-key-l></spam>
+
+
+<p>之后打开 IDE 可以看到 Options 选项多了一个 Clear Shell Windows Ctrl+L 的选项,这就说明配置成功了,可以尝试下,<br><img src="/img/clear/Python-clear.gif"></p>
+</smap></spam>
+      
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      <span id="busuanzi_container_page_pv">
+      | 阅读量<span id="busuanzi_value_page_pv"></span>次
+      </span>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/10/15/vbbm1231/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+    <div
+        style="position: fixed; top: 10px; bottom: 20px; right: 45px; z-index: 10; font-weight: bold; font-size: 1.3em;">
+
+        <div style="text-align: center; border-bottom: 5px solid #red; padding: 1px; color: red; font-size: 15px;">
+            Python-公众号
+        </div>
+
+        <img width="120px" height="120px"
+            src="https://ncstatic.clewm.net/rsrc/2018/0930/02/764ae44ae30188efa0a2dca6ab4c0b99.jpg">
+    </div>
+
+   
+
+
+
+  
     <article id="post-Hexo-git-提交-Permission-denied-publickey" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -536,12 +690,12 @@ hexo-cli 是命令行界面
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/25/cjmp07mni000cbkmdcxgqgkaf/">中秋节</a>
+      <a class="article-title" href="/2018/09/25/cjnabwgf2000gj8mdbe3wwz8y/">中秋节</a>
     </h1>
   
 
         
-        <a href="/2018/09/25/cjmp07mni000cbkmdcxgqgkaf/" class="archive-article-date">
+        <a href="/2018/09/25/cjnabwgf2000gj8mdbe3wwz8y/" class="archive-article-date">
   	<time datetime="2018-09-24T18:06:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-25</time>
 </a>
         
@@ -579,7 +733,7 @@ hexo-cli 是命令行界面
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/25/cjmp07mni000cbkmdcxgqgkaf/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/09/25/cjnabwgf2000gj8mdbe3wwz8y/">展开全文 >></a>
         </p>
       
 
@@ -633,12 +787,12 @@ hexo-cli 是命令行界面
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/23/cjmp07mnq000ibkmd74l8x0if/">心情</a>
+      <a class="article-title" href="/2018/09/23/cjnabwgfc000lj8mdxwxerokq/">心情</a>
     </h1>
   
 
         
-        <a href="/2018/09/23/cjmp07mnq000ibkmd74l8x0if/" class="archive-article-date">
+        <a href="/2018/09/23/cjnabwgfc000lj8mdxwxerokq/" class="archive-article-date">
   	<time datetime="2018-09-23T13:54:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-23</time>
 </a>
         
@@ -676,7 +830,7 @@ hexo-cli 是命令行界面
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/23/cjmp07mnq000ibkmd74l8x0if/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/09/23/cjnabwgfc000lj8mdxwxerokq/">展开全文 >></a>
         </p>
       
 
@@ -730,12 +884,12 @@ hexo-cli 是命令行界面
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/22/cjmp07mn70007bkmdxd24obd7/">windows 快捷键的使用</a>
+      <a class="article-title" href="/2018/09/22/cjnabwget0008j8md23q44d02/">windows 快捷键的使用</a>
     </h1>
   
 
         
-        <a href="/2018/09/22/cjmp07mn70007bkmdxd24obd7/" class="archive-article-date">
+        <a href="/2018/09/22/cjnabwget0008j8md23q44d02/" class="archive-article-date">
   	<time datetime="2018-09-22T12:41:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-22</time>
 </a>
         
@@ -825,7 +979,7 @@ win + → -&gt; 最大化窗口打右边
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/22/cjmp07mn70007bkmdxd24obd7/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/09/22/cjnabwget0008j8md23q44d02/">展开全文 >></a>
         </p>
       
 
@@ -879,12 +1033,12 @@ win + → -&gt; 最大化窗口打右边
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/21/cjmp07mn40006bkmdln4bhu8w/">windows 开启或关闭服务</a>
+      <a class="article-title" href="/2018/09/21/cjnabwgeo0007j8md1udsslag/">windows 开启或关闭服务</a>
     </h1>
   
 
         
-        <a href="/2018/09/21/cjmp07mn40006bkmdln4bhu8w/" class="archive-article-date">
+        <a href="/2018/09/21/cjnabwgeo0007j8md1udsslag/" class="archive-article-date">
   	<time datetime="2018-09-21T13:48:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-21</time>
 </a>
         
@@ -923,7 +1077,7 @@ win + → -&gt; 最大化窗口打右边
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/21/cjmp07mn40006bkmdln4bhu8w/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/09/21/cjnabwgeo0007j8md1udsslag/">展开全文 >></a>
         </p>
       
 
@@ -977,12 +1131,12 @@ win + → -&gt; 最大化窗口打右边
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/20/cjmp07mna0008bkmdwbr21hx6/">windows 系统盘产生的随机文件</a>
+      <a class="article-title" href="/2018/09/20/cjnabwgf0000ej8mdnvncyz2e/">windows 系统盘产生的随机文件</a>
     </h1>
   
 
         
-        <a href="/2018/09/20/cjmp07mna0008bkmdwbr21hx6/" class="archive-article-date">
+        <a href="/2018/09/20/cjnabwgf0000ej8mdnvncyz2e/" class="archive-article-date">
   	<time datetime="2018-09-20T13:31:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
 </a>
         
@@ -1020,106 +1174,7 @@ win + → -&gt; 最大化窗口打右边
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/20/cjmp07mna0008bkmdwbr21hx6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-    <div
-        style="position: fixed; top: 10px; bottom: 20px; right: 45px; z-index: 10; font-weight: bold; font-size: 1.3em;">
-
-        <div style="text-align: center; border-bottom: 5px solid #red; padding: 1px; color: red; font-size: 15px;">
-            Python-公众号
-        </div>
-
-        <img width="120px" height="120px"
-            src="https://ncstatic.clewm.net/rsrc/2018/0930/02/764ae44ae30188efa0a2dca6ab4c0b99.jpg">
-    </div>
-
-   
-
-
-
-  
-    <article id="post-博客主页插入音乐" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/19/cjmp07mnk000ebkmdtaj3cum3/">博客主页插入音乐</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/19/cjmp07mnk000ebkmdtaj3cum3/" class="archive-article-date">
-  	<time datetime="2018-09-19T12:49:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="博客里面插入音乐-首先要打开-官方版的网易云-网页版的播放器-网易云地址-https-music-163-com-打开过之后搜索自己喜欢的一首歌"><a href="#博客里面插入音乐-首先要打开-官方版的网易云-网页版的播放器-网易云地址-https-music-163-com-打开过之后搜索自己喜欢的一首歌" class="headerlink" title="博客里面插入音乐.首先要打开.官方版的网易云.网页版的播放器.网易云地址:https://music.163.com.打开过之后搜索自己喜欢的一首歌."></a>博客里面插入音乐.首先要打开.官方版的网易云.网页版的播放器.网易云地址:<a href="https://music.163.com" target="_blank" rel="noopener">https://music.163.com</a>.打开过之后搜索自己喜欢的一首歌.</h1><p><img src="/img/yinyue/wangyiyun_1.png"><br><img src="/img/yinyue/wangyiyun_2.png"><br><img src="/img/yinyue/yinyue_lu_jing.png"><br>将复制的代码放到博客主题下:themes -&gt; yilia -&gt; layout -&gt; _partial -&gt; left-col.ejs 这个文件里面<br><img src="/img/yinyue/gen_mu_lu.png"><br>最后还需要修改配置文件. hexo 下 _config.yml 的 post_asset_folder: true</p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="470" height="86" src="//music.163.com/outchain/player?type=2&id=33035954&auto=0&height=66"></iframe>
-
-<p>上面这个就是效果..哈哈.是不是.很酷.↑</p>
-
-      
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      <span id="busuanzi_container_page_pv">
-      | 阅读量<span id="busuanzi_value_page_pv"></span>次
-      </span>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/19/cjmp07mnk000ebkmdtaj3cum3/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/09/20/cjnabwgf0000ej8mdnvncyz2e/">展开全文 >></a>
         </p>
       
 
@@ -1182,7 +1237,7 @@ win + → -&gt; 最大化窗口打右边
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left" style="color:#FF4500; font-size:20px;">
-    		&copy; 2018年09月30日_23点12分05秒 微风之后的秋凉
+    		&copy; 2018年10月15日_21点22分13秒 微风之后的秋凉
     	</div>
     </div>
   </div>
