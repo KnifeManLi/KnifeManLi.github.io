@@ -149,6 +149,366 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-爬虫-url-反爬机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/11/url1314/">爬虫-url-反爬机制</a>
+    </h1>
+  
+
+        
+        <a href="/2019/01/11/url1314/" class="archive-article-date">
+  	<time datetime="2019-01-11T02:05:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="爬虫之-url-链接的伪装"><a href="#爬虫之-url-链接的伪装" class="headerlink" title="爬虫之 url 链接的伪装"></a>爬虫之 url 链接的伪装</h1><pre><code>在进行爬取数据是,要是使用 post 进行表单提交,将里面的字符串都做成字典格式的进行提交,要是返回的数据不对或不是自己想要的结果,可能是这个网址有反爬机制，也有可能是 url 连接错误,下面就有两个例子
+
+例_1: 错误:url = &apos;https://fanyi.baidu.com/v2transapi&apos; 这是百度翻译的链接,反爬机制是给出错误的 url 地址,导致返回的数据错误,
+      正确:url = &apos;https://fanyi.baidu.com/transapi&apos; 多了 v2 这俩个字符,将 v2 删除可以正常提取数据
+
+例_2: 错误:url = &quot;http://fanyi.youdao.com/translate_o?smartresult=dict&amp;smartresult=rule&quot; 这是有道翻译的链接 /
+                                                            / 反爬机制是给出错误的 url 地址导致返回的数据错误
+      正确:url = &quot;http://fanyi.youdao.com/translate?smartresult=dict&amp;smartresult=rule&quot; 多了 _o 这俩个字符 /
+                                                                                 / 将 _o 删除可以正常提取数据
+</code></pre><h1 id="爬取数据是要是没有提取到想要的数据-可能是-url-错误-或者是提交表单时遗漏的什么-也或者是代码的问题-多想多看"><a href="#爬取数据是要是没有提取到想要的数据-可能是-url-错误-或者是提交表单时遗漏的什么-也或者是代码的问题-多想多看" class="headerlink" title="爬取数据是要是没有提取到想要的数据,可能是 url 错误 或者是提交表单时遗漏的什么,也或者是代码的问题, 多想多看"></a>爬取数据是要是没有提取到想要的数据,可能是 url 错误 或者是提交表单时遗漏的什么,也或者是代码的问题, 多想多看</h1>
+      
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      <span id="busuanzi_container_page_pv">
+      | 阅读量<span id="busuanzi_value_page_pv"></span>次
+      </span>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/01/11/url1314/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+    <div
+        style="position: fixed; top: 10px; bottom: 20px; right: 45px; z-index: 10; font-weight: bold; font-size: 1.3em;">
+
+        <div style="text-align: center; border-bottom: 5px solid #red; padding: 1px; color: red; font-size: 15px;">
+            Python-公众号
+        </div>
+
+        <img width="120px" height="120px"
+            src="https://ncstatic.clewm.net/rsrc/2018/0930/02/764ae44ae30188efa0a2dca6ab4c0b99.jpg">
+    </div>
+
+   
+
+
+
+  
+    <article id="post-Python-程序打包-模块导入-问题和解决" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/11/exe12313453/">Python 程序打包-模块导入-问题和解决</a>
+    </h1>
+  
+
+        
+        <a href="/2019/01/11/exe12313453/" class="archive-article-date">
+  	<time datetime="2019-01-11T01:57:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Python-之程序打包之后某些模块没有导入的问题之解决"><a href="#Python-之程序打包之后某些模块没有导入的问题之解决" class="headerlink" title="Python 之程序打包之后某些模块没有导入的问题之解决,"></a>Python 之程序打包之后某些模块没有导入的问题之解决,</h1><pre><code>问题: 今天写了一个语音翻译程序,想将打包成 .exe 好方便使用,结果将打包好的 .exe 运行之后
+发现 pyttsx3里面有一个模块.显示没有导入的现象(no module named drivers) 结果无法发出声音，查看了一下安装包.这个模块也是存在的
+(没有打包之前.用 cmd 运行.是正常的.那就不是路径问题了).结果仔细看了一下 pyttsx3的安装包, drivers 也是一个包,并不是一个模块
+所以是导包时候没有将这个包导入.结果是程序加载时.找不到这个包的位置.
+
+解决问题: 既然报的错误是没有导入这个包.那我在程序前加上 import pyttsx3.drivers 不就可以了吗.结果是导入了 drivers 这个包之后. dirvers 下面的 sapi5.py 这个模块还是显示没有导入的现象.想了一下.那再将这个模块导入不就行了. from pyttsx3.drivers import sapi5 
+尝试打包一下.运行 xxx.exe 结果是 ok 了.
+
+解决问题心得.在遇到问题时不要急.先思考 2-5分钟 根据问题来进行分析一步一步解刨.实在不行再 百度 + google 来寻找
+</code></pre>
+      
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      <span id="busuanzi_container_page_pv">
+      | 阅读量<span id="busuanzi_value_page_pv"></span>次
+      </span>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/01/11/exe12313453/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+    <div
+        style="position: fixed; top: 10px; bottom: 20px; right: 45px; z-index: 10; font-weight: bold; font-size: 1.3em;">
+
+        <div style="text-align: center; border-bottom: 5px solid #red; padding: 1px; color: red; font-size: 15px;">
+            Python-公众号
+        </div>
+
+        <img width="120px" height="120px"
+            src="https://ncstatic.clewm.net/rsrc/2018/0930/02/764ae44ae30188efa0a2dca6ab4c0b99.jpg">
+    </div>
+
+   
+
+
+
+  
+    <article id="post-安装-Scrapy-爬虫框架步骤" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/11/hello12313453/">安装 Scrapy 爬虫框架步骤</a>
+    </h1>
+  
+
+        
+        <a href="/2019/01/11/hello12313453/" class="archive-article-date">
+  	<time datetime="2019-01-11T01:42:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Python-安装-Scrapy-爬虫框架步骤"><a href="#Python-安装-Scrapy-爬虫框架步骤" class="headerlink" title="Python 安装 Scrapy 爬虫框架步骤"></a>Python 安装 Scrapy 爬虫框架步骤</h1><pre><code>先安装 pip3 install Twisted-18.9.0-cp37m-win32.whl 这个文件，下载地址:https://www.lfd.uci.edu/~gohlke/pythonlibs/ 根据自己使用的 Python 版本号来进行安装[我用的是 Python3.7]
+
+安装好之后.再次安装 Scrapy 框架
+pip install Scrapy 即可
+</code></pre><h1 id="Scrapy-如何使用"><a href="#Scrapy-如何使用" class="headerlink" title="Scrapy 如何使用"></a><a href="https://www.cnblogs.com/BlueSkyyj/p/7663607.html" target="_blank" rel="noopener">Scrapy 如何使用</a></h1>
+      
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      <span id="busuanzi_container_page_pv">
+      | 阅读量<span id="busuanzi_value_page_pv"></span>次
+      </span>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/01/11/hello12313453/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+    <div
+        style="position: fixed; top: 10px; bottom: 20px; right: 45px; z-index: 10; font-weight: bold; font-size: 1.3em;">
+
+        <div style="text-align: center; border-bottom: 5px solid #red; padding: 1px; color: red; font-size: 15px;">
+            Python-公众号
+        </div>
+
+        <img width="120px" height="120px"
+            src="https://ncstatic.clewm.net/rsrc/2018/0930/02/764ae44ae30188efa0a2dca6ab4c0b99.jpg">
+    </div>
+
+   
+
+
+
+  
+    <article id="post-笔记本拨号上网出现-651-错误" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/15/vbbm1231/">笔记本拨号上网出现 651 错误</a>
+    </h1>
+  
+
+        
+        <a href="/2018/10/15/vbbm1231/" class="archive-article-date">
+  	<time datetime="2018-10-14T20:50:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/img/651/Error_651_.png"></p>
+<h3 id="今天上网时莫名奇妙的断网了-出现宽带连接错误-651-调制解释器错误-无法连接到网络-重新连接了下还是出现同样的错误-给运营商打电话-人家说网线没有问题-那就是自己的电脑出现了问题-找找这-找找那-还是连接不上-用手机一查-修改一下网络配置就可以了-好像出现这个问题的很多-并不是所有电脑用这个方法都行的通-咱们也就见招拆招吧-这里给大家分享下希望有用"><a href="#今天上网时莫名奇妙的断网了-出现宽带连接错误-651-调制解释器错误-无法连接到网络-重新连接了下还是出现同样的错误-给运营商打电话-人家说网线没有问题-那就是自己的电脑出现了问题-找找这-找找那-还是连接不上-用手机一查-修改一下网络配置就可以了-好像出现这个问题的很多-并不是所有电脑用这个方法都行的通-咱们也就见招拆招吧-这里给大家分享下希望有用" class="headerlink" title="今天上网时莫名奇妙的断网了,出现宽带连接错误 651 调制解释器错误,无法连接到网络,重新连接了下还是出现同样的错误,给运营商打电话,人家说网线没有问题,那就是自己的电脑出现了问题,找找这,找找那,还是连接不上,用手机一查,修改一下网络配置就可以了,好像出现这个问题的很多, 并不是所有电脑用这个方法都行的通, 咱们也就见招拆招吧,这里给大家分享下希望有用,"></a>今天上网时莫名奇妙的断网了,出现宽带连接错误 651 调制解释器错误,无法连接到网络,重新连接了下还是出现同样的错误,给运营商打电话,人家说网线没有问题,那就是自己的电脑出现了问题,找找这,找找那,还是连接不上,用手机一查,修改一下网络配置就可以了,好像出现这个问题的很多, 并不是所有电脑用这个方法都行的通, 咱们也就见招拆招吧,这里给大家分享下希望有用,</h3><p><img src="/img/651/solution_651.png"></p>
+<spam style="color:#000000; font-size:20px;">右键:点击右下方的电脑图标,打开 网络和共享中心 –&gt; 更改适配器设置 –&gt; 右键点击本地连接的属性 –&gt; 配置 –&gt; 高级 –&gt; 网络地址(要是还连接不上将 网络地址 改为 连接速度和双工模式,值选择:100 Mbps 全双工),</spam>
+      
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      <span id="busuanzi_container_page_pv">
+      | 阅读量<span id="busuanzi_value_page_pv"></span>次
+      </span>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/10/15/vbbm1231/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+    <div
+        style="position: fixed; top: 10px; bottom: 20px; right: 45px; z-index: 10; font-weight: bold; font-size: 1.3em;">
+
+        <div style="text-align: center; border-bottom: 5px solid #red; padding: 1px; color: red; font-size: 15px;">
+            Python-公众号
+        </div>
+
+        <img width="120px" height="120px"
+            src="https://ncstatic.clewm.net/rsrc/2018/0930/02/764ae44ae30188efa0a2dca6ab4c0b99.jpg">
+    </div>
+
+   
+
+
+
+  
     <article id="post-Python-IED-之清屏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -303,19 +663,19 @@ class ClearWindow:
 
 
   
-    <article id="post-笔记本拨号上网出现-651-错误" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-爬虫-urllib-模块的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/15/vbbm1231/">笔记本拨号上网出现 651 错误</a>
+      <a class="article-title" href="/2018/10/15/vbbm12313453/">爬虫 urllib 模块的使用</a>
     </h1>
   
 
         
-        <a href="/2018/10/15/vbbm1231/" class="archive-article-date">
+        <a href="/2018/10/15/vbbm12313453/" class="archive-article-date">
   	<time datetime="2018-10-14T20:50:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-15</time>
 </a>
         
@@ -323,9 +683,28 @@ class ClearWindow:
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/img/651/Error_651_.png"></p>
-<h3 id="今天上网时莫名奇妙的断网了-出现宽带连接错误-651-调制解释器错误-无法连接到网络-重新连接了下还是出现同样的错误-给运营商打电话-人家说网线没有问题-那就是自己的电脑出现了问题-找找这-找找那-还是连接不上-用手机一查-修改一下网络配置就可以了-好像出现这个问题的很多-并不是所有电脑用这个方法都行的通-咱们也就见招拆招吧-这里给大家分享下希望有用"><a href="#今天上网时莫名奇妙的断网了-出现宽带连接错误-651-调制解释器错误-无法连接到网络-重新连接了下还是出现同样的错误-给运营商打电话-人家说网线没有问题-那就是自己的电脑出现了问题-找找这-找找那-还是连接不上-用手机一查-修改一下网络配置就可以了-好像出现这个问题的很多-并不是所有电脑用这个方法都行的通-咱们也就见招拆招吧-这里给大家分享下希望有用" class="headerlink" title="今天上网时莫名奇妙的断网了,出现宽带连接错误 651 调制解释器错误,无法连接到网络,重新连接了下还是出现同样的错误,给运营商打电话,人家说网线没有问题,那就是自己的电脑出现了问题,找找这,找找那,还是连接不上,用手机一查,修改一下网络配置就可以了,好像出现这个问题的很多, 并不是所有电脑用这个方法都行的通, 咱们也就见招拆招吧,这里给大家分享下希望有用,"></a>今天上网时莫名奇妙的断网了,出现宽带连接错误 651 调制解释器错误,无法连接到网络,重新连接了下还是出现同样的错误,给运营商打电话,人家说网线没有问题,那就是自己的电脑出现了问题,找找这,找找那,还是连接不上,用手机一查,修改一下网络配置就可以了,好像出现这个问题的很多, 并不是所有电脑用这个方法都行的通, 咱们也就见招拆招吧,这里给大家分享下希望有用,</h3><p><img src="/img/651/solution_651.png"></p>
-<spam style="color:#000000; font-size:20px;">右键:点击右下方的电脑图标,打开 网络和共享中心 –&gt; 更改适配器设置 –&gt; 右键点击本地连接的属性 –&gt; 配置 –&gt; 高级 –&gt; 网络地址(要是还连接不上将 网络地址 改为 连接速度和双工模式,值选择:100 Mbps 全双工),</spam>
+        <h1 id="urllib-包下的-request-模块下的-quote-函数的使用"><a href="#urllib-包下的-request-模块下的-quote-函数的使用" class="headerlink" title="urllib 包下的 request 模块下的 quote 函数的使用,"></a>urllib 包下的 request 模块下的 quote 函数的使用,</h1><h3 id="quote-函数是将中文进行编码"><a href="#quote-函数是将中文进行编码" class="headerlink" title="quote() 函数是将中文进行编码,"></a>quote() 函数是将中文进行编码,</h3><pre><code>quote(str, safe=&apos;/&apos;, encoding=None)
+str 是转码的字符串,
+safe 参数是对不进行转码的字符,进行过滤, 比如:&quot;;&quot; | &quot;/&quot; | &quot;?&quot; | &quot;:&quot; | &quot;@&quot; | &quot;&amp;&quot; | &quot;=&quot; | &quot;+&quot; |&quot;$&quot; | &quot;,&quot; | &quot;~&quot; | &apos; &apos;， 里面可以出现多个参数,用逗号分割, safe=&apos;;,/,?&apos;
+encoding 转换成指定编码格式, 比如: utf-8, gbk,
+</code></pre><h3 id="quote-函数的使用"><a href="#quote-函数的使用" class="headerlink" title="quote() 函数的使用"></a>quote() 函数的使用</h3><pre><code>data = &apos;你好&apos;
+result = requets.quote(data)
+print(result)
+输出: &apos;%E4%BD%A0%E5%A5%BD&apos; # 将中文进行转码
+
+new_data = &apos;http://www.baidu.com/baike/德国&apos;
+result2 = request.quote(new_data, safe=&apos;:,/&apos;) 
+print(result2)
+输出: &apos;http://www.baidu.com/baike/%E5%BE%B7%E5%9B%BD&apos; # 里面的 :,/ 没有进行编码
+
+data3 = &apos;你好&amp;世界&apos;
+result3 = request.quote(data3, safe=&apos;&amp;&apos;, encoding=&apos;utf-8&apos;)
+result4 = request.quote(data3, safe=&apos;&amp;&apos;, encoding=&apos;gbk&apos;)
+print(result3)
+print(result4)
+输出: &apos;%E4%BD%A0%E5%A5%BD&amp;%E4%B8%96%E7%95%8C&apos; # 转换成 utf-8 编码
+输出: &apos;%C4%E3%BA%C3&amp;%CA%C0%BD%E7&apos; # 转换成 gbk 编码
+</code></pre><h1 id="quote-函数是对-url-进行编码-在编写爬虫时-发起-url-链接-url-里面是不允许出现空格和中文字符的-这时就要将其编码"><a href="#quote-函数是对-url-进行编码-在编写爬虫时-发起-url-链接-url-里面是不允许出现空格和中文字符的-这时就要将其编码" class="headerlink" title="quote() 函数是对 url 进行编码, 在编写爬虫时,发起 url 链接, url 里面是不允许出现空格和中文字符的,这时就要将其编码,"></a>quote() 函数是对 url 进行编码, 在编写爬虫时,发起 url 链接, url 里面是不允许出现空格和中文字符的,这时就要将其编码,</h1>
       
 
 
@@ -342,7 +721,7 @@ class ClearWindow:
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/10/15/vbbm1231/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/10/15/vbbm12313453/">展开全文 >></a>
         </p>
       
 
@@ -769,447 +1148,6 @@ hexo-cli 是命令行界面
 
 
   
-    <article id="post-中秋节" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/25/cjpbnrrif000gxcmdu4dz82og/">中秋节</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/25/cjpbnrrif000gxcmdu4dz82og/" class="archive-article-date">
-  	<time datetime="2018-09-24T18:06:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="祝福大家-中秋节-开心"><a href="#祝福大家-中秋节-开心" class="headerlink" title="祝福大家-中秋节-开心"></a>祝福大家-中秋节-开心</h1><p><img src="/img/zhong_qiu/zhong_qiu.png"></p>
-<p>秋季的结束，亦为着冬天的到来，皑皑的白雪将美丽的地球焕然一新，今年的中秋要比往年显得沉闷些,没有圆月的挂起,显得天空中有些无趣,好像人没有了精神,显得那样秃废和无力,站在街道旁,看着来来往往的人群,每人都在开心的笑着,说着,聊着自己的故事,诉说着自己的心情,每人都有自己的故事吧,每个人扮演着自己的角色,演奏着属于自己的生活,欢爱,快乐,哀愁,憎恨,无常,好像今天的月亮没有爬出来一样,那样的不寻轨蹈居,也许这就是生活吗,没有千遍一律的定理,也没有一层不变的铁律,有的只是,世事无常,巡回千遍,既然在如此万变的世界,我们要做的就是拥有一个 <spam style="color:red;font-size:15px;">积极 + 坚强</spam> 的好心态，来应对这个没有规则的天地,佛曰:以平心,应无常，让我们为今年的中秋在心中升起自己的月亮,来打破这沉默的静寂,<spam style="color:red;font-size:15px;">祝愿大家2018中秋节幸福。</spam></p>
-
-      
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">日记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      <span id="busuanzi_container_page_pv">
-      | 阅读量<span id="busuanzi_value_page_pv"></span>次
-      </span>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/25/cjpbnrrif000gxcmdu4dz82og/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-    <div
-        style="position: fixed; top: 10px; bottom: 20px; right: 45px; z-index: 10; font-weight: bold; font-size: 1.3em;">
-
-        <div style="text-align: center; border-bottom: 5px solid #red; padding: 1px; color: red; font-size: 15px;">
-            Python-公众号
-        </div>
-
-        <img width="120px" height="120px"
-            src="https://ncstatic.clewm.net/rsrc/2018/0930/02/764ae44ae30188efa0a2dca6ab4c0b99.jpg">
-    </div>
-
-   
-
-
-
-  
-    <article id="post-心情" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/23/cjpbnrrio000lxcmd2eyq0wzu/">心情</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/23/cjpbnrrio000lxcmd2eyq0wzu/" class="archive-article-date">
-  	<time datetime="2018-09-23T13:54:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><marquee width="1000" height="30" direction="right" behavior="alternate" scrollamount="6" scrolldelay="88"><h1>下雨的心情</h1></marquee><br><img src="/img/xia_yu/xia_yu.png"></p>
-<p>白天晴空万里.傍晚乌云密布.吃饭之前没有雷生.没有乌云.更没有风.吃完饭出来一看.喔.好一个漂泊大雨.吓的人都不想走出去一步,这时候我才发现自己没有带伞.哎.下班之后的凉爽来的可真快.看见街上的行人.坚强的撑着手中的小伞.努力的向前迈进.伞也在风和雨的交杂中.显得微微颤抖.好像是和雨在拼命的较量.是雨的锐利.还是伞的顽强.这时屌丝的我看了下手机.哇，xxx.这雨要下到 23:00 哟，这个如何是好,定了两秒，想了一下.将手机装入手提袋中.大步的向这雨中走去.感受到雨点的冷漠和冰凉.身体有些瑟瑟发抖.这时.才感觉雨的强大.伞的顽强.每落在脸上一滴雨水.都是一个警告.下一滴雨水还会更强.不多时.身体全部被雨水打湿.这时的我想起了.那人手中的小伞.坚强而不屈,而我也要做一把小伞.撑起自己的一片蓝天,</p><p style="color:red;font-size:25px;"> 中秋节前夕的一场暴雨。</p><p></p>
-
-      
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">日记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      <span id="busuanzi_container_page_pv">
-      | 阅读量<span id="busuanzi_value_page_pv"></span>次
-      </span>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/23/cjpbnrrio000lxcmd2eyq0wzu/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-    <div
-        style="position: fixed; top: 10px; bottom: 20px; right: 45px; z-index: 10; font-weight: bold; font-size: 1.3em;">
-
-        <div style="text-align: center; border-bottom: 5px solid #red; padding: 1px; color: red; font-size: 15px;">
-            Python-公众号
-        </div>
-
-        <img width="120px" height="120px"
-            src="https://ncstatic.clewm.net/rsrc/2018/0930/02/764ae44ae30188efa0a2dca6ab4c0b99.jpg">
-    </div>
-
-   
-
-
-
-  
-    <article id="post-windows-快捷键的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/22/cjpbnrrid000excmdmbjx6lpm/">windows 快捷键的使用</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/22/cjpbnrrid000excmdmbjx6lpm/" class="archive-article-date">
-  	<time datetime="2018-09-22T12:41:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 style="color:block;font-size:30px;">喜欢用 windows 的童鞋.一定会经常用: Alt + Tab 来切换桌面程序.这就是快捷方式.也叫组合键.可以快速的打开莫个程序.和关闭程序.用起来非常方便快捷.也是用.windows 系统必须知道的几个快捷键，有的快捷键长时间不用就生疏了.给大家整理一下.用到时方便查找,</h1>
-
-<p><br></p>
-<spam style="color:red;font-size:25px;">Fn 快捷键的使用: ↓</spam>
-
-<pre><code>F1 -&gt; windows 帮助文档
-F2 -&gt; 更改当前文件名称(光标必须为当前文件)
-F3 -&gt; windows 搜索本地文件或文件夹
-F4 -&gt; 打开搜索栏搜索地址
-F5 -&gt; 刷新
-F11 -&gt; 全屏或退出全屏、
-</code></pre><spam style="color:red;font-size:25px;">Ctrl 快捷键的使用: ↓</spam>
-
-<pre><code>shift + 鼠标左键 -&gt; 连续选择文件
-Ctrl + 鼠标左键 -&gt; 不连续选择文件
-Ctrl + A -&gt; 全部选定
-Ctrl + C -&gt; 复制所选内容
-Ctrl + S -&gt; 保存文件
-Ctrl + X -&gt; 将选定部分剪切
-Ctrl + V -&gt; 粘贴
-Ctrl + Z -&gt; 撤销上一部操作
-Ctrl + N -&gt; 打开 windows 桌面文件夹
-Ctrl + 鼠标滚轮 -&gt; 更改文件图标大小
-Ctrl + shift + N -&gt; 当前目录建立文件夹
-Ctrl + shift + Esc -&gt; 打开任务管理器
-delete -&gt; 将其选择文件放入.回收站
-shift + delete -&gt; 永久删除
-</code></pre><spam style="color:red;font-size:25px;">Alt 快捷键的使用: ↓</spam>
-
-<pre><code>Alt + Tab -&gt; 在打开的项目之间进行切换
-Alt + Enter -&gt; 显示当前文件属性
-Alt + P -&gt; 在文件夹内预览可读文件(比如 temp.txt 文件或 QQ.png 图片)
-Alt + F4 -&gt; 关闭当前程序
-Alt + ← -&gt; 切换到前一次打开的文件夹
-Alt + → -&gt; 切换到下一次后打开的文件夹
-Alt + ↑ -&gt; 打开上一层文件夹
-</code></pre><spam style="color:red;font-size:25px;">win 快捷键的使用: ↓ <img src="/img/win/win.png"></spam>
-
-<pre><code>win -&gt; 打开或关闭开始菜单
-win + D -&gt; 显示桌面
-win + E -&gt; 打开我的电脑
-win + F -&gt; 搜索文件或文件夹
-win + R -&gt; 打开运行对话框
-win + L -&gt; 锁定计算机
-win + Pause -&gt; 显示系统属性信息
-win + M -&gt; 最小化所有窗口
-win + shift + m -&gt; 还原最小化所有窗口
-win + ↑ -&gt; 窗口最大化
-win + ↓ -&gt; 窗口最小化
-win + ← -&gt; 最大化窗口打左边
-win + → -&gt; 最大化窗口打右边
-</code></pre><h3 id="在-DOS-下查看一个文件命令是-type-文件名-txt-比如-temp-txt-文件"><a href="#在-DOS-下查看一个文件命令是-type-文件名-txt-比如-temp-txt-文件" class="headerlink" title="在 DOS 下查看一个文件命令是: type 文件名.txt(比如.temp.txt 文件),"></a>在 DOS 下查看一个文件命令是: type 文件名.txt(比如.temp.txt 文件),</h3><p><img src="/img/cmd/cmd_xia.png"></p>
-<p>—&gt;&gt;&gt; 直接在 cmd 里面查看这个文件 ↑</p>
-<h3 id="在-cmd-里面直接输入文件名是打开这个文件-↓"><a href="#在-cmd-里面直接输入文件名是打开这个文件-↓" class="headerlink" title="在 cmd 里面直接输入文件名是打开这个文件 ↓"></a>在 cmd 里面直接输入文件名是打开这个文件 ↓</h3><p><img src="/img/cmd/cmd_da_kai_file.png"></p>
-
-      
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">windows</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      <span id="busuanzi_container_page_pv">
-      | 阅读量<span id="busuanzi_value_page_pv"></span>次
-      </span>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/22/cjpbnrrid000excmdmbjx6lpm/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-    <div
-        style="position: fixed; top: 10px; bottom: 20px; right: 45px; z-index: 10; font-weight: bold; font-size: 1.3em;">
-
-        <div style="text-align: center; border-bottom: 5px solid #red; padding: 1px; color: red; font-size: 15px;">
-            Python-公众号
-        </div>
-
-        <img width="120px" height="120px"
-            src="https://ncstatic.clewm.net/rsrc/2018/0930/02/764ae44ae30188efa0a2dca6ab4c0b99.jpg">
-    </div>
-
-   
-
-
-
-  
-    <article id="post-windows-开启或关闭服务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/21/cjpbnrri50008xcmd6xfj66sd/">windows 开启或关闭服务</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/21/cjpbnrri50008xcmd6xfj66sd/" class="archive-article-date">
-  	<time datetime="2018-09-21T13:48:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="windows-查看本地计算机都开启了那些服务-打开-我的计算机-gt-控制面板-gt-系统安全-gt-管理工具-gt-点击-服务-即可查看到都开启了那些服务-可以将本地无用的服务给关闭掉-这样可以加快电脑运行速度，要是那天用到了这个服务再开启来就可以了，也可以使用快捷键来打开-win-R-输入-services-msc-即可打开本地服务，"><a href="#windows-查看本地计算机都开启了那些服务-打开-我的计算机-gt-控制面板-gt-系统安全-gt-管理工具-gt-点击-服务-即可查看到都开启了那些服务-可以将本地无用的服务给关闭掉-这样可以加快电脑运行速度，要是那天用到了这个服务再开启来就可以了，也可以使用快捷键来打开-win-R-输入-services-msc-即可打开本地服务，" class="headerlink" title="windows 查看本地计算机都开启了那些服务.打开:我的计算机 -&gt; 控制面板 -&gt; 系统安全 -&gt; 管理工具 -&gt; 点击: 服务 即可查看到都开启了那些服务.可以将本地无用的服务给关闭掉.这样可以加快电脑运行速度，要是那天用到了这个服务再开启来就可以了，也可以使用快捷键来打开: win + R. 输入: services.msc 即可打开本地服务，"></a>windows 查看本地计算机都开启了那些服务.打开:我的计算机 -&gt; 控制面板 -&gt; 系统安全 -&gt; 管理工具 -&gt; 点击: 服务 即可查看到都开启了那些服务.可以将本地无用的服务给关闭掉.这样可以加快电脑运行速度，要是那天用到了这个服务再开启来就可以了，也可以使用快捷键来打开: win + R. 输入: services.msc 即可打开本地服务，</h1><p><img src="/img/fu_wu/fu_wu_1.png"><br><img src="/img/fu_wu/fu_wu_2.png"><br>-&gt;&gt; 以打印机服务为例.开启或关闭</p>
-<p><img src="/img/fu_wu/fu_wu_3.png"><br><img src="/img/fu_wu/fu_wu_4.png"></p>
-<p>开启服务和关闭服务同样操作.只需将:禁用 改为 手动 即可</p>
-
-      
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">windows</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      <span id="busuanzi_container_page_pv">
-      | 阅读量<span id="busuanzi_value_page_pv"></span>次
-      </span>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/21/cjpbnrri50008xcmd6xfj66sd/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-    <div
-        style="position: fixed; top: 10px; bottom: 20px; right: 45px; z-index: 10; font-weight: bold; font-size: 1.3em;">
-
-        <div style="text-align: center; border-bottom: 5px solid #red; padding: 1px; color: red; font-size: 15px;">
-            Python-公众号
-        </div>
-
-        <img width="120px" height="120px"
-            src="https://ncstatic.clewm.net/rsrc/2018/0930/02/764ae44ae30188efa0a2dca6ab4c0b99.jpg">
-    </div>
-
-   
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1226,7 +1164,7 @@ win + → -&gt; 最大化窗口打右边
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left" style="color:#FF4500; font-size:20px;">
-    		&copy; 2018年12月06日_5点02分96秒 微风之后的秋凉
+    		&copy; 2019年01月15日_20点42分83秒 微风之后的秋凉
     	</div>
     </div>
   </div>
@@ -1308,15 +1246,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cmd</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">windows</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">cmd</a>
               </li>
              
               <li class="article-tag-list-item">
